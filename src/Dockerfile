@@ -1,7 +1,7 @@
 FROM php:7.3-fpm
 
 #entrypoint
-COPY docker-php-entrypoint.sh /usr/local/bin/docker-php-entrypoint
+COPY docker-php-entrypoint /usr/local/bin/docker-php-entrypoint
 RUN chmod a+x /usr/local/bin/docker-php-entrypoint \
 	&& apt-get update && apt-get install -y --no-install-recommends \
 	procps \
@@ -22,6 +22,6 @@ RUN chmod a+x /usr/local/bin/docker-php-entrypoint \
 	#zip
 	&& docker-php-ext-install -j$(nproc) zip \
 	#composer
-	COMPOSER_DOWNLOAD_URL="https://getcomposer.org/composer.phar" \
+	&& COMPOSER_DOWNLOAD_URL="https://getcomposer.org/composer.phar" \
 	&& curl -o /usr/local/bin/composer ${COMPOSER_DOWNLOAD_URL} \
 	&& chmod a+x /usr/local/bin/composer
