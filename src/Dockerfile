@@ -1,4 +1,4 @@
-FROM php:7.3-fpm
+FROM php:7.4.0-fpm
 
 #entrypoint
 COPY docker-php-entrypoint /usr/local/bin/docker-php-entrypoint
