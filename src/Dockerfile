@@ -1,4 +1,4 @@
-FROM php:7.4.0-fpm
+FROM php:7.4-fpm
 
 #entrypoint
 COPY docker-php-entrypoint /usr/local/bin/docker-php-entrypoint
@@ -22,6 +22,6 @@ RUN chmod a+x /usr/local/bin/docker-php-entrypoint \
 	#zip
 	&& docker-php-ext-install -j$(nproc) zip \
 	#composer
-	&& COMPOSER_DOWNLOAD_URL="https://getcomposer.org/composer.phar" \
+	&& COMPOSER_DOWNLOAD_URL="https://getcomposer.org/download/1.10.22/composer.phar" \
 	&& curl -o /usr/local/bin/composer ${COMPOSER_DOWNLOAD_URL} \
 	&& chmod a+x /usr/local/bin/composer
