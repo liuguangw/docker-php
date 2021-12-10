@@ -1,21 +1,16 @@
-FROM php:7.4-fpm
+FROM php:8.1-fpm-alpine
 
 #entrypoint
 COPY docker-php-entrypoint /usr/local/bin/docker-php-entrypoint
 RUN chmod a+x /usr/local/bin/docker-php-entrypoint \
-	&& apt-get update && apt-get install -y --no-install-recommends \
-	procps \
-	git \
-	unzip \
+	&& apk add --no-cache \
 	libzip-dev \
-	libfreetype6-dev \
-	libjpeg62-turbo-dev \
+	freetype-dev \
+	libjpeg-dev \
 	libpng-dev \
 	#redis
 	&& pecl install redis \
 	&& docker-php-ext-enable redis \
-	#mysql
-	&& docker-php-ext-install -j$(nproc) mysqli pdo_mysql \
 	#gd
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd \
