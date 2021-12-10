@@ -1,5 +1,5 @@
 # docker-php
-流光的php docker镜像，以官方的docker镜像为基准，添加了一些常用扩展，例如MySQL、Redis等。
+流光的php docker镜像，以官方的docker镜像为基准，添加了一些常用扩展，例如GD、PDO_mysql、Redis等。
 
 此外还加入了composer，可以设置环境变量`COMPOSER_MIRROR_URL`来设置镜像URL。
 
